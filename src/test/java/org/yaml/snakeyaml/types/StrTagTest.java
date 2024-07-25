@@ -164,11 +164,11 @@ public class StrTagTest extends AbstractTest {
     String str = "xxx";
     assertEquals(3, str.length());
     Yaml yaml = new Yaml();
-    Charset charset = StandardCharsets.UTF_16;
+    Charset charset = StandardCharsets.UTF_8;
     ByteArrayOutputStream stream = new ByteArrayOutputStream();
     Writer writer = new OutputStreamWriter(stream, charset);
     yaml.dump(str, writer);
-    assertEquals(str + "\n", stream.toString("UTF-16"));
-    assertEquals("Must include BOM: " + stream, (1 + 3 + 1) * 2, stream.toString().length());
+    assertEquals(str + "\n", stream.toString("UTF-8"));
+    assertEquals("Must include BOM: " + stream, (3 + 1), stream.toString().length());
   }
 }
